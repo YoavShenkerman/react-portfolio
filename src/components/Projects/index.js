@@ -55,7 +55,10 @@ const Projects = () => {
             to={project.link}
             key={project.id}
             className="project-card"
-            style={{ backgroundColor: project.bgcolor }}
+            style={{
+              backgroundColor: project.bgcolor,
+              animationDelay: `${2 + project.id * 0.3}s`,
+            }}
           >
             <img src={project.image} alt={project.title} />
             <div className="content">
