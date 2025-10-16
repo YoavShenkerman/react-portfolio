@@ -1,0 +1,114 @@
+.projects-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 150px 10%;
+  box-sizing: border-box;
+
+  .text-zone {
+    width: 25%;
+
+    h1 {
+      font-size: 53px;
+      font-family: 'Coolvetica';
+      color: #ffd700;
+      font-weight: 400;
+      margin-top: 0;
+      position: relative;
+      margin-bottom: 0;
+      left: 10px;
+
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .text-animate-hover {
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  .projects-zone {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .project-card {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      height: 80%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .content {
+      position: absolute;
+      bottom: -70px;
+      width: 100%;
+      padding: 10px 15px;
+      z-index: 3;
+      text-align: center;
+      transition: bottom 0.3s ease, background 0.3s ease;
+      background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,1));
+      color: #fff;
+      transform: translateX(-6%);
+
+
+      h3 {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle at top left, rgba(255,215,0,0.5), transparent 70%);
+      z-index: 2;
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+
+    &:hover::after {
+      width: 120%;
+      height: 120%;
+    }
+
+    &:hover .content {
+      bottom: 0;
+      background: transparent;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+  }
+
+
+}
