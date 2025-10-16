@@ -1,4 +1,10 @@
 .home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
 
   .text-zone {
     display: flex;
@@ -37,9 +43,9 @@ h2 {
   font-family: sans-serif;
   text-decoration: none;
   padding: 10px 18px;
-    border: 1px solid #ffd700;
+  border: 1px solid #ffd700;
   margin-top: 25px;
-  float: left;
+  //float: left;
   animation: fadeIn 1s 1.8s backwards;
   white-space: nowrap;
 
