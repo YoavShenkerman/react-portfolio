@@ -8,21 +8,21 @@ const projects = [
     id: 1,
     title: 'AVL Tree Implementation',
     image: '/BinaryTree.png',
-    link: '/project/avl-tree',
+    link: '/avl-tree',
     bgcolor: '#150957',
   },
   {
     id: 2,
     title: 'Fibonacci Heap Implementation',
     image: '/FibonacciHeap.jpg',
-    link: '/project/avl-tree',
+    link: '/fibonacci-heap',
     bgcolor: '#080a09',
   },
   {
     id: 3,
     title: 'LaLiga Match Predictor',
     image: '/laliga.png',
-    link: '/project/avl-tree',
+    link: '/laliga-predictor',
     bgcolor: '#fdfdfd',
   },
 ]
@@ -44,7 +44,7 @@ const Projects = () => {
           <AnimatedLetters
             letterClass={letterClass}
             strArray={['P', 'r', 'o', 'j', 'e', 'c', 't', 's']}
-            idx={15}
+            idx={5}
           />
         </h1>
         <h2>Check out some of my coding projects and experiments.</h2>

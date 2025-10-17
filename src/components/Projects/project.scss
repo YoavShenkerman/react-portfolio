@@ -1,0 +1,151 @@
+.project-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 150px 10%;
+  box-sizing: border-box;
+
+  .text-zone {
+    width: 35%;
+
+    h1 {
+      white-space: nowrap;
+      font-size: 53px;
+      font-family: 'Coolvetica', sans-serif;
+      color: #ffd700;
+      font-weight: 400;
+      margin-top: 0;
+      position: relative;
+      margin-bottom: 0;
+      left: 10px;
+
+    }
+
+    p {
+      font-size: 15px;
+      color: #fff;
+      font-family: sans-serif;
+      font-weight: 300;
+      min-width: fit-content;
+      animation: pulse 1s;
+    }
+
+    .text-animate-hover {
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+
+      button {
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: fadeInUp 0.4s forwards;
+        animation-delay: 0.4s;
+      }
+
+      .back-btn {
+        background-color: #ccc;
+        color: #000;
+
+        &:hover {
+          transform: scale(1.05);
+          background-color: #aaa;
+        }
+      }
+
+      .github-btn {
+        background-color: #181717;
+        color: #fff;
+
+        &:hover {
+          transform: scale(1.05);
+          background-color: #333;
+        }
+      }
+    }
+  }
+  .tech-stack {
+    margin-top: 30px;
+
+    h3 {
+      font-family: sans-serif;
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+
+      .tech-icon {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        svg {
+          width: 30px;
+          height: 30px;
+          transition: transform 0.3s ease;
+        }
+
+        .tooltip {
+          font-family: sans-serif;
+          position: absolute;
+          left: 110%;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(0, 0, 0, 0.85);
+          color: #fff;
+          padding: 5px 10px;
+          border-radius: 4px;
+          white-space: nowrap;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        &:hover {
+          svg {
+            transform: translateX(-5px);
+          }
+
+          .tooltip {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+          }
+
+          ~ .tech-icon {
+            transform: translateX(calc(100% + 10px));
+          }
+        }
+      }
+    }
+
+
+
+  }
+
+}

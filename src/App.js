@@ -5,6 +5,9 @@ import Home from './components/Home'
 import About from './components/About'
 import Contact from './components/Contact'
 import Projects from './components/Projects'
+import AVLTree from './components/Projects/AVLTree'
+import FibonacciHeap from './components/Projects/FibonacciHeap'
+import LaLigaPredictor from './components/Projects/LaLigaPredictor'
 
 function App() {
   return (
@@ -15,6 +18,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/avl-tree" element={<AVLTree />} />
+          <Route path="/fibonacci-heap" element={<FibonacciHeap />} />
+          <Route path="/laliga-predictor" element={<LaLigaPredictor />} />
         </Route>
       </Routes>
     </>
