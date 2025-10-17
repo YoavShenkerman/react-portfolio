@@ -28,7 +28,9 @@
       font-family: sans-serif;
       font-weight: 300;
       min-width: fit-content;
-      animation: pulse 1s;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 1s;
     }
 
     .text-animate-hover {
@@ -54,8 +56,8 @@
         transition: transform 0.2s ease, background-color 0.2s ease;
         opacity: 0;
         transform: translateY(10px);
-        animation: fadeInUp 0.4s forwards;
-        animation-delay: 0.4s;
+        animation: fadeIn 1s forwards;
+        animation-delay: 1s;
       }
 
       .back-btn {
@@ -79,6 +81,7 @@
       }
     }
   }
+
   .tech-stack {
     margin-top: 30px;
 
@@ -87,6 +90,9 @@
       font-size: 18px;
       margin-bottom: 15px;
       color: #ffd700;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+      animation-delay: 2s;
     }
 
     .icons {
@@ -104,6 +110,17 @@
         align-items: center;
         cursor: pointer;
         transition: transform 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+
+        &:nth-of-type(1) {animation-delay: 2s;}
+        &:nth-of-type(2) {animation-delay: 2.2s;}
+        &:nth-of-type(3) {animation-delay: 2.4s;}
+        &:nth-of-type(4) {animation-delay: 2.6s;}
+        &:nth-of-type(5) {animation-delay: 2.8s;}
+        &:nth-of-type(6) {animation-delay: 3s;}
+        &:nth-of-type(7) {animation-delay: 3.2s;}
+
 
         svg {
           width: 30px;
@@ -143,7 +160,6 @@
         }
       }
     }
-
 
 
   }
