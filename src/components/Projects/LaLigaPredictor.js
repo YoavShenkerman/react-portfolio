@@ -15,10 +15,12 @@ import { useNavigate } from 'react-router-dom'
 import {
   faArrowLeft,
   faArrowUpRightFromSquare,
+  faVideo,
 } from '@fortawesome/free-solid-svg-icons'
 
 const LaLigaPredictor = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
+  const [showVideo, setShowVideo] = useState(false)
   const navigate = useNavigate() // React Router hook
 
   const goBack = () => navigate(-1)
@@ -81,7 +83,19 @@ const LaLigaPredictor = () => {
           <button className="github-btn" onClick={openGitHub}>
             View <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </button>
+          <button className="video-btn" onClick={() => setShowVideo(true)}>
+            Watch Video <FontAwesomeIcon icon={faVideo} />
+          </button>
         </div>
+        {showVideo && (
+          <div className="video-modal">
+            <div className="overlay" onClick={() => setShowVideo(false)}></div>
+            <video controls autoPlay>
+              <source src="/laligapreVid.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
       </div>
       <div className="tech-stack">
         <h3>Technologies Used:</h3>
