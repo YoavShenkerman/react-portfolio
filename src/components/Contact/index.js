@@ -4,13 +4,16 @@ import { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import emailjs from '@emailjs/browser'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
+  const [captchaValue, setCaptchaValue] = useState(null)
   const refForm = useRef()
   const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID
   const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID
   const userToken = process.env.REACT_APP_EMAILJS_USER_TOKEN
+  const recaptchaKey = process.env.REACT_APP_RECAPTCHA_SITE_KEY
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,6 +25,10 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault()
 
+    if (!captchaValue) {
+      alert('Please verify that you are not a robot.')
+      return
+    }
     emailjs.sendForm(serviceId, templateId, refForm.current, userToken).then(
       () => {
         alert('Message successfully sent!')
@@ -85,8 +92,14 @@ const Contact = () => {
                   required
                 ></textarea>
               </li>
-              <li>
-                <input type="submit" className="flat-button" value="SEND" />
+              <li className="captcha-submit">
+                <ReCAPTCHA
+                  sitekey={recaptchaKey}
+                  onChange={(value) => setCaptchaValue(value)}
+                />
+                <button type="submit" className="flat-button">
+                  SEND
+                </button>
               </li>
             </ul>
           </form>
