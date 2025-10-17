@@ -111,7 +111,7 @@
         cursor: pointer;
         transition: transform 0.3s ease;
         opacity: 0;
-        animation: fadeIn 1s forwards;
+        animation: fadeInUp 1s forwards;
 
         &:nth-of-type(1) {animation-delay: 2s;}
         &:nth-of-type(2) {animation-delay: 2.2s;}
