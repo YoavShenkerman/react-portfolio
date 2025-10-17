@@ -64,7 +64,7 @@ const Contact = () => {
               rel="noreferrer"
               href="https://www.linkedin.com/in/yoav-shenkerman"
             >
-              <FontAwesomeIcon icon={faLinkedin} color="#4d4d4e" />
+              <FontAwesomeIcon icon={faLinkedin} color="#59595a" />
             </a>
           </li>
         </div>
