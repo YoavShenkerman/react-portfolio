@@ -113,9 +113,9 @@
 
       video {
         position: relative;
-        max-width: 90%;   /* לא יחרוג מרוחב המסך */
-        max-height: 80%;  /* לא יחרוג מגובה המסך */
-        z-index: 1001;    /* מעל ה-overlay */
+        max-width: 90%;
+        max-height: 80%;
+        z-index: 1001;
         border-radius: 10px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       }
