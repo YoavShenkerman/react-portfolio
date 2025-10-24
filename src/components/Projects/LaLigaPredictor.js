@@ -91,7 +91,10 @@ const LaLigaPredictor = () => {
           <div className="video-modal">
             <div className="overlay" onClick={() => setShowVideo(false)}></div>
             <video controls autoPlay>
-              <source src="/laligapreVid.mp4" type="video/mp4" />
+              <source
+                src={process.env.PUBLIC_URL + '/laligapreVid.mp4'}
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
           </div>
