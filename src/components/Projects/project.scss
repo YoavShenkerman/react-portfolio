@@ -60,12 +60,13 @@
       }
 
       .back-btn {
-        background-color: #ccc;
+        background: none;
+        //background-color: #ccc; Optional
         color: #000;
 
         &:hover {
           transform: scale(1.10);
-          background-color: #aaa;
+          //background-color: #aaa; Optional
         }
       }
 
@@ -122,9 +123,117 @@
     }
 
   }
+  // --- בתוך project.scss ---
+
+  // עיצוב כפתור הגלריה (זהה לוידאו אבל שם אחר למקרה שתרצה לשנות צבע)
+  .gallery-btn {
+    background-color: #ffd700;
+    color: #000;
+    &:hover {
+      transform: scale(1.10);
+      background-color: #e0c200;
+    }
+  }
+
+  // עיצוב המודל של הגלריה
+  .gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); // רקע כהה מאוד
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+
+    .gallery-content {
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        max-width: 100%;
+        max-height: 80vh; // כדי שלא יחרוג מגובה המסך
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        animation: fadeIn 0.5s ease;
+      }
+    }
+
+    // כפתור סגירה (X)
+    .close-btn {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover { color: #ffd700; }
+    }
+
+    // כפתורי ניווט (חצים)
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      font-size: 24px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s;
+
+      &:hover {
+        background: #ffd700;
+        color: #000;
+      }
+
+      &.prev { left: -60px; }
+      &.next { right: -60px; }
+    }
+
+    // נקודות אינדיקציה למטה
+    .dots {
+      position: absolute;
+      bottom: -30px;
+      display: flex;
+      gap: 10px;
+
+      span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #555;
+        cursor: pointer;
+        transition: background 0.3s;
+
+        &.active {
+          background: #ffd700;
+        }
+      }
+    }
+  }
 
   .tech-stack {
     margin-top: 30px;
+    margin-left: 50px;
 
     h3 {
       font-family: sans-serif;
@@ -161,6 +270,11 @@
         &:nth-of-type(5) {animation-delay: 2.8s;}
         &:nth-of-type(6) {animation-delay: 3s;}
         &:nth-of-type(7) {animation-delay: 3.2s;}
+        &:nth-of-type(8) {animation-delay: 3.4s;}
+        &:nth-of-type(9) {animation-delay: 3.6s;}
+        &:nth-of-type(10) {animation-delay: 3.8s;}
+
+
 
 
         svg {
@@ -201,8 +315,123 @@
         }
       }
     }
-
-
   }
+}
 
+// --- Mobile Responsiveness ---
+@media screen and (max-width: 960px) {
+  .project-container {
+    flex-direction: column; // הופך לטור
+    padding: 0 20px 40px; // ריווח נורמלי למובייל
+    height: auto;
+    overflow-y: visible; // מאפשר גלילה
+    display: block; // מבטל Flexbox ראשי כדי לאפשר זרימה טבעית
+
+    .text-zone {
+      width: 100%;
+      position: static; // משחרר מיקומים
+      text-align: center; // ממרכז את הטקסט
+
+      h1 {
+        font-size: 32px; // הקטנה משמעותית
+        white-space: normal; // חובה! מאפשר שבירת שורות
+        left: 0;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 20px;
+        text-align: center; // או justify, לבחירתך
+        padding: 0 10px;
+      }
+
+      .buttons {
+        justify-content: center; // ממרכז את הכפתורים
+        flex-wrap: wrap; // מאפשר להם לרדת שורה אם המסך ממש צר
+        margin-bottom: 40px;
+
+        button {
+          // התאמה למגע באצבע
+          padding: 10px 20px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    // --- טיפול באייקונים וטולטיפים ---
+    .tech-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0;
+      margin-bottom: 70px; // רווח לגלילה
+
+      h3 {
+        text-align: center;
+      }
+
+      .icons {
+        justify-content: center;
+        flex-wrap: wrap; // מאפשר לאייקונים להסתדר בכמה שורות
+        gap: 15px;
+
+        .tech-icon {
+          // ביטול האפקט שדוחף את האייקונים האחרים במובייל
+          &:hover ~ .tech-icon {
+            transform: none;
+          }
+
+          &:hover svg {
+            transform: none; // ביטול הזזת האייקון
+          }
+
+          // שינוי מיקום ה-Tooltip שיופיע למטה ולא בצד
+          .tooltip {
+            left: 50%;
+            top: 100%; // מתחת לאייקון
+            transform: translateX(-50%); // מירכוז
+            margin-top: 5px;
+            margin-left: 0;
+
+            // אופציונלי: להציג תמיד במובייל או רק בלחיצה
+            // opacity: 1;
+          }
+
+          // תיקון למצב Hover במובייל (לחיצה ארוכה)
+          &:hover .tooltip {
+            transform: translateX(-50%);
+          }
+        }
+      }
+    }
+
+    // התאמה למודל הוידאו במובייל
+    .video-modal {
+      video {
+        width: 95%; // תופס כמעט את כל הרוחב
+        height: auto;
+      }
+    }
+  }
+  .gallery-modal {
+    .gallery-content {
+      width: 95%;
+
+      .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+
+        &.prev { left: 10px; }
+        &.next { right: 10px; }
+      }
+
+      .close-btn {
+        top: -35px;
+        right: 10px;
+      }
+    }
+  }
 }

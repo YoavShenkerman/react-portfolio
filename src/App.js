@@ -8,6 +8,7 @@ import Projects from './components/Projects'
 import AVLTree from './components/Projects/AVLTree'
 import FibonacciHeap from './components/Projects/FibonacciHeap'
 import LaLigaPredictor from './components/Projects/LaLigaPredictor'
+import HabitTracker from './components/Projects/HabitTracker'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/avl-tree" element={<AVLTree />} />
           <Route path="/fibonacci-heap" element={<FibonacciHeap />} />
           <Route path="/laliga-predictor" element={<LaLigaPredictor />} />
+          <Route path="/habit-tracker" element={<HabitTracker />} />
         </Route>
       </Routes>
     </>

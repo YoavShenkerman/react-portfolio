@@ -25,6 +25,13 @@ const projects = [
     link: '/laliga-predictor',
     bgcolor: '#fdfdfd',
   },
+  {
+    id: 4,
+    title: 'Habit Tracker App',
+    image: process.env.PUBLIC_URL + '/habit-tracker.png',
+    link: '/habit-tracker',
+    bgcolor: '#f0f0f0',
+  },
 ]
 
 const Projects = () => {

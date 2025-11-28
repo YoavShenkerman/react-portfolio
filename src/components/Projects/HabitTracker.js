@@ -3,34 +3,57 @@ import AnimatedLetters from '../AnimatedLetters'
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faCss3,
   faDocker,
   faGitAlt,
   faGithub,
   faPython,
   faReact,
 } from '@fortawesome/free-brands-svg-icons'
-import { SiFastapi, SiJavascript, SiPostgresql } from 'react-icons/si'
+import { SiExpo, SiFastapi, SiPostgresql, SiTypescript } from 'react-icons/si'
 import { DiRedis } from 'react-icons/di'
 import { useNavigate } from 'react-router-dom'
 import {
   faArrowLeft,
   faArrowUpRightFromSquare,
-  faVideo,
+  faImages,
+  faChevronLeft,
+  faChevronRight,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons'
 
-const LaLigaPredictor = () => {
+const images = [
+  process.env.PUBLIC_URL + '/habit1.png',
+  process.env.PUBLIC_URL + '/habit2.png',
+  process.env.PUBLIC_URL + '/habit3.png',
+  process.env.PUBLIC_URL + '/habit4.png',
+  process.env.PUBLIC_URL + '/habit5.png',
+  process.env.PUBLIC_URL + '/habit6.png',
+]
+
+const HabitTracker = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
-  const [showVideo, setShowVideo] = useState(false)
+  const [showGallery, setShowGallery] = useState(false)
+  const [currentImage, setCurrentImage] = useState(0)
+
   const navigate = useNavigate() // React Router hook
 
   const goBack = () => navigate(-1)
   const openGitHub = () =>
     window.open(
-      'https://github.com/YoavShenkerman/football-predictions',
+      'https://github.com/YoavShenkerman/habit-track.git',
       '_blank',
       'noreferrer'
     )
+
+  const nextImage = (e) => {
+    e.stopPropagation()
+    setCurrentImage((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+  }
+
+  const prevImage = (e) => {
+    e.stopPropagation()
+    setCurrentImage((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -46,36 +69,28 @@ const LaLigaPredictor = () => {
           <AnimatedLetters
             letterClass={letterClass}
             strArray={[
-              'L',
+              'H',
               'a',
-              'L',
+              'b',
               'i',
-              'g',
-              'a',
-              ' ',
-              'M',
-              'a',
               't',
-              'c',
-              'h',
-              ' ',
-              'P',
+              '-',
+              'T',
               'r',
-              'e',
-              'd',
-              'i',
+              'a',
               'c',
-              't',
-              'o',
+              'k',
+              'e',
               'r',
             ]}
             idx={5}
           />
         </h1>
         <p>
-          A machine learning project for predicting Spanish LaLiga match
-          outcomes. Includes data preprocessing, model training, and performance
-          optimization — combining a passion for data and sports analytics.
+          Built a full-stack Habit Tracker app to solve inconsistency in
+          personal goals. Features include JWT authentication, AI-powered weekly
+          summaries (Gemini API), and smart caching with Redis for optimal
+          performance.
         </p>
         <div className="buttons">
           <button className="back-btn" onClick={goBack}>
@@ -84,22 +99,10 @@ const LaLigaPredictor = () => {
           <button className="github-btn" onClick={openGitHub}>
             View <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </button>
-          <button className="video-btn" onClick={() => setShowVideo(true)}>
-            Watch Video <FontAwesomeIcon icon={faVideo} />
+          <button className="gallery-btn" onClick={() => setShowGallery(true)}>
+            Screenshots <FontAwesomeIcon icon={faImages} />
           </button>
         </div>
-        {showVideo && (
-          <div className="video-modal">
-            <div className="overlay" onClick={() => setShowVideo(false)}></div>
-            <video controls autoPlay>
-              <source
-                src={process.env.PUBLIC_URL + '/laligapreVid.mp4'}
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        )}
       </div>
       <div className="tech-stack">
         <h3>Technologies Used:</h3>
@@ -113,12 +116,8 @@ const LaLigaPredictor = () => {
             <span className="tooltip">React</span>
           </div>
           <div className="tech-icon">
-            <SiJavascript color="#F7DF1E" />
-            <span className="tooltip">JavaScript</span>
-          </div>
-          <div className="tech-icon">
-            <FontAwesomeIcon icon={faCss3} color="#264DE4" />
-            <span className="tooltip">CSS3</span>
+            <SiTypescript color="3178C6" />
+            <span className="tooltip">TypeScript</span>
           </div>
           <div className="tech-icon">
             <SiPostgresql color="#336791" />
@@ -137,6 +136,10 @@ const LaLigaPredictor = () => {
             <span className="tooltip">FastAPI</span>
           </div>
           <div className="tech-icon">
+            <SiExpo color="#FFFFFF" />
+            <span className="tooltip">Expo</span>
+          </div>
+          <div className="tech-icon">
             <FontAwesomeIcon icon={faGitAlt} color="#F1502F" />
             <span className="tooltip">Git</span>
           </div>
@@ -146,8 +149,37 @@ const LaLigaPredictor = () => {
           </div>
         </div>
       </div>
+      {showGallery && (
+        <div className="gallery-modal" onClick={() => setShowGallery(false)}>
+          <div className="gallery-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={() => setShowGallery(false)}>
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+
+            <button className="nav-btn prev" onClick={prevImage}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+
+            <img src={images[currentImage]} alt="Project Screenshot" />
+
+            <button className="nav-btn next" onClick={nextImage}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+
+            <div className="dots">
+              {images.map((_, idx) => (
+                <span
+                  key={idx}
+                  className={currentImage === idx ? 'active' : ''}
+                  onClick={() => setCurrentImage(idx)}
+                ></span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
-export default LaLigaPredictor
+export default HabitTracker

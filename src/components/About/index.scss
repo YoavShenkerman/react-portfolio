@@ -1,3 +1,4 @@
+// --- Desktop Styles (רגיל - ללא שינוי) ---
 .stage-cube-cont {
   width: 50%;
   height: 100%;
@@ -24,6 +25,7 @@
     height: 200px;
     border: 1px solid #ccc;
     background: rgba(255, 255, 255, 0.4);
+    text-align: center;
     font-size: 100px;
     display: flex;
     justify-content: center;
@@ -31,50 +33,81 @@
     box-shadow: 0 0 20px 0px lightyellow;
   }
 
-  .face1 {
-    transform: translateZ(100px);
-  }
-
-  .face2 {
-    transform: rotateY(90deg) translateZ(100px);
-  }
-
-  .face3 {
-    transform: rotateY(90deg) rotateX(90deg) translateZ(100px);
-  }
-
-  .face4 {
-    transform: rotateY(180deg) rotateZ(90deg) translateZ(100px);
-  }
-
-  .face5 {
-    transform: rotateY(-90deg) rotateZ(90deg) translateZ(100px);
-  }
-
-  .face6 {
-    transform: rotateX(-90deg) translateZ(100px);
-  }
-
+  .face1 { transform: translateZ(100px); }
+  .face2 { transform: rotateY(90deg) translateZ(100px); }
+  .face3 { transform: rotateY(90deg) rotateX(90deg) translateZ(100px); }
+  .face4 { transform: rotateY(180deg) rotateZ(90deg) translateZ(100px); }
+  .face5 { transform: rotateY(-90deg) rotateZ(90deg) translateZ(100px); }
+  .face6 { transform: rotateX(-90deg) translateZ(100px); }
 }
 
 @keyframes spincube {
-  from,
-  to {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  from, to { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  16% { transform: rotateY(-90deg); }
+  33% { transform: rotateY(-90deg) rotateZ(90deg); }
+  50% { transform: rotateY(-180deg) rotateZ(90deg); }
+  66% { transform: rotateY(-270deg) rotateZ(90deg); }
+  83% { transform: rotateX(90deg); }
+}
+
+// --- Mobile Styles Fix (הכוחני) ---
+@media screen and (max-width: 960px) {
+
+  // אנחנו חייבים להשתמש ב !important בחלק מהמקרים כדי לדרוס את ה-Layout
+
+  .about-page {
+    // מאפשר גלילה במובייל אם התוכן ארוך
+    height: auto !important;
+    overflow-y: scroll;
+    padding-top: 0px;
+
+    .text-zone {
+      // 1. ביטול מוחלט של המיקום הקודם
+      position: static !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+
+      // 2. עיצוב מחדש
+      width: 100%;
+      display: block;
+      padding: 0 20px; // רווח מהצדדים
+      box-sizing: border-box;
+
+      h1 {
+        font-size: 32px;
+        margin-top: 0;
+        line-height: 1.2;
+      }
+
+      p {
+        font-size: 14px;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+    }
   }
-  16% {
-    transform: rotateY(-90deg);
+
+  // הקוביה תזרום אוטומטית מתחת לטקסט כי הטקסט הוא static עכשיו
+  .stage-cube-cont {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    margin-top: 10px; // רווח בין סוף הטקסט לקוביה
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    padding: 0;
+    margin-bottom: 100px; // מוסיף רווח גדול למטה כדי שיהיה אפשר לגלול
   }
-  33% {
-    transform: rotateY(-90deg) rotateZ(90deg);
-  }
-  50% {
-    transform: rotateY(-180deg) rotateZ(90deg);
-  }
-  66% {
-    transform: rotateY(-270deg) rotateZ(90deg);
-  }
-  83% {
-    transform: rotateX(90deg);
+
+  .cubespinner {
+    width: 200px;
+    height: 200px;
+    margin-left: 0;
+    transform: scale(0.6);
   }
 }
