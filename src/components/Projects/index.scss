@@ -1,6 +1,3 @@
-// ==============================================
-// 1. DESKTOP STYLES (המקורי שלך)
-// ==============================================
 .projects-page {
   display: flex;
   flex-direction: row;
@@ -143,30 +140,22 @@
   }
 }
 
-// ==============================================
-// 2. MOBILE STYLES (מותאם ל-Layout החדש)
-// ==============================================
 @media screen and (max-width: 960px) {
   .projects-page {
-    display: block;
     flex-direction: column;
-    padding: 0;
+    padding: 0 20px 40px;
     height: auto !important;
     overflow-y: visible;
+    display: block;
 
     .text-zone {
-      // שבירת המיקום המוחלט
-      position: static !important;
-      top: auto !important;
-      left: auto !important;
-      transform: none !important;
 
       width: 100%;
       text-align: center;
       padding: 0 20px;
       box-sizing: border-box;
       margin-bottom: 40px;
-      margin-top: 20px; // קצת אוויר מלמעלה
+      margin-top: 0px;
 
       h1 {
         font-size: 35px;
@@ -183,35 +172,23 @@
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center; // ממקם באמצע
+      justify-content: center;
       gap: 15px;
       padding: 0 10px;
       box-sizing: border-box;
-
-      // רווח תחתון קריטי לגלילה
-      margin-bottom: 100px;
+      margin-bottom: 30px;
     }
 
     .project-card {
-      // הגדרה: 2 בשורה במובייל רגיל
       width: 45%;
       min-width: 140px;
       height: 220px;
       margin-bottom: 10px;
 
-      // במובייל מציגים את השם תמיד (כי אין הובר)
       .content {
         bottom: 0;
         background: rgba(0,0,0,0.7);
       }
     }
-  }
-}
-
-// התאמה למסכים ממש קטנים (אייפון צר וכו')
-@media screen and (max-width: 480px) {
-  .projects-page .projects-zone .project-card {
-    width: 100%; // פרויקט אחד בשורה
-    max-width: 300px;
   }
 }

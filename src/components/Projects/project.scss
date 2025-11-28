@@ -92,15 +92,15 @@
     }
 
     .video-modal {
-      position: fixed;       /* מעל כל הדף */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       display: flex;
-      justify-content: center; /* מרכז אופקי */
-      align-items: center;     /* מרכז אנכי */
-      z-index: 1000;           /* מעל כל התוכן */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
 
       .overlay {
         position: absolute;
@@ -108,7 +108,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.7); /* חצי שקוף */
+        background: rgba(0,0,0,0.7);
         cursor: pointer;
       }
 
@@ -123,9 +123,7 @@
     }
 
   }
-  // --- בתוך project.scss ---
 
-  // עיצוב כפתור הגלריה (זהה לוידאו אבל שם אחר למקרה שתרצה לשנות צבע)
   .gallery-btn {
     background-color: #ffd700;
     color: #000;
@@ -135,14 +133,13 @@
     }
   }
 
-  // עיצוב המודל של הגלריה
   .gallery-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9); // רקע כהה מאוד
+    background: rgba(0, 0, 0, 0.9);
     z-index: 2000;
     display: flex;
     justify-content: center;
@@ -160,14 +157,13 @@
 
       img {
         max-width: 100%;
-        max-height: 80vh; // כדי שלא יחרוג מגובה המסך
+        max-height: 80vh;
         border-radius: 8px;
         box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
         animation: fadeIn 0.5s ease;
       }
     }
 
-    // כפתור סגירה (X)
     .close-btn {
       position: absolute;
       top: -40px;
@@ -182,7 +178,6 @@
       &:hover { color: #ffd700; }
     }
 
-    // כפתורי ניווט (חצים)
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -209,7 +204,6 @@
       &.next { right: -60px; }
     }
 
-    // נקודות אינדיקציה למטה
     .dots {
       position: absolute;
       bottom: -30px;
@@ -318,23 +312,22 @@
   }
 }
 
-// --- Mobile Responsiveness ---
 @media screen and (max-width: 960px) {
   .project-container {
-    flex-direction: column; // הופך לטור
-    padding: 0 20px 40px; // ריווח נורמלי למובייל
+    flex-direction: column;
+    padding: 0 20px 40px;
     height: auto;
-    overflow-y: visible; // מאפשר גלילה
-    display: block; // מבטל Flexbox ראשי כדי לאפשר זרימה טבעית
+    overflow-y: visible;
+    display: block;
 
     .text-zone {
       width: 100%;
-      position: static; // משחרר מיקומים
-      text-align: center; // ממרכז את הטקסט
+      position: static;
+      text-align: center;
 
       h1 {
-        font-size: 32px; // הקטנה משמעותית
-        white-space: normal; // חובה! מאפשר שבירת שורות
+        font-size: 32px;
+        white-space: normal;
         left: 0;
         margin-bottom: 20px;
         line-height: 1.2;
@@ -343,30 +336,29 @@
       p {
         font-size: 14px;
         margin-bottom: 20px;
-        text-align: center; // או justify, לבחירתך
+        text-align: center;
         padding: 0 10px;
       }
 
       .buttons {
-        justify-content: center; // ממרכז את הכפתורים
-        flex-wrap: wrap; // מאפשר להם לרדת שורה אם המסך ממש צר
+        justify-content: center;
+        flex-wrap: wrap;
         margin-bottom: 40px;
 
         button {
-          // התאמה למגע באצבע
           padding: 10px 20px;
           font-size: 16px;
         }
       }
     }
 
-    // --- טיפול באייקונים וטולטיפים ---
     .tech-stack {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-top: 0;
-      margin-bottom: 70px; // רווח לגלילה
+      margin-bottom: 70px;
+      margin-left: 0;
 
       h3 {
         text-align: center;
@@ -374,32 +366,27 @@
 
       .icons {
         justify-content: center;
-        flex-wrap: wrap; // מאפשר לאייקונים להסתדר בכמה שורות
+        flex-wrap: wrap;
         gap: 15px;
 
         .tech-icon {
-          // ביטול האפקט שדוחף את האייקונים האחרים במובייל
           &:hover ~ .tech-icon {
             transform: none;
           }
 
           &:hover svg {
-            transform: none; // ביטול הזזת האייקון
+            transform: none;
           }
 
-          // שינוי מיקום ה-Tooltip שיופיע למטה ולא בצד
           .tooltip {
             left: 50%;
-            top: 100%; // מתחת לאייקון
-            transform: translateX(-50%); // מירכוז
+            top: 100%;
+            transform: translateX(-50%);
             margin-top: 5px;
             margin-left: 0;
 
-            // אופציונלי: להציג תמיד במובייל או רק בלחיצה
-            // opacity: 1;
           }
 
-          // תיקון למצב Hover במובייל (לחיצה ארוכה)
           &:hover .tooltip {
             transform: translateX(-50%);
           }
@@ -407,10 +394,9 @@
       }
     }
 
-    // התאמה למודל הוידאו במובייל
     .video-modal {
       video {
-        width: 95%; // תופס כמעט את כל הרוחב
+        width: 95%;
         height: auto;
       }
     }

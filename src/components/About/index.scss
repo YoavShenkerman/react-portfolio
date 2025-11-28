@@ -1,4 +1,3 @@
-// --- Desktop Styles (רגיל - ללא שינוי) ---
 .stage-cube-cont {
   width: 50%;
   height: 100%;
@@ -50,28 +49,21 @@
   83% { transform: rotateX(90deg); }
 }
 
-// --- Mobile Styles Fix (הכוחני) ---
 @media screen and (max-width: 960px) {
-
-  // אנחנו חייבים להשתמש ב !important בחלק מהמקרים כדי לדרוס את ה-Layout
-
   .about-page {
-    // מאפשר גלילה במובייל אם התוכן ארוך
     height: auto !important;
     overflow-y: scroll;
     padding-top: 0px;
 
     .text-zone {
-      // 1. ביטול מוחלט של המיקום הקודם
       position: static !important;
       transform: none !important;
       top: auto !important;
       left: auto !important;
 
-      // 2. עיצוב מחדש
       width: 100%;
       display: block;
-      padding: 0 20px; // רווח מהצדדים
+      padding: 0 20px;
       box-sizing: border-box;
 
       h1 {
@@ -88,12 +80,11 @@
     }
   }
 
-  // הקוביה תזרום אוטומטית מתחת לטקסט כי הטקסט הוא static עכשיו
   .stage-cube-cont {
     position: relative !important;
     top: auto !important;
     right: auto !important;
-    margin-top: 10px; // רווח בין סוף הטקסט לקוביה
+    margin-top: 10px;
     width: 100%;
     height: 300px;
     display: flex;
@@ -101,7 +92,7 @@
     align-items: center;
     overflow: visible;
     padding: 0;
-    margin-bottom: 100px; // מוסיף רווח גדול למטה כדי שיהיה אפשר לגלול
+    margin-bottom: 100px;
   }
 
   .cubespinner {
